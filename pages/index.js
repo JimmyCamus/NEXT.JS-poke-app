@@ -12,7 +12,7 @@ const Pokemon = ({pokemon}) => {
 export default function Pokemones({pokemones}) {
   return (
     <div>
-      <p>Pokemones</p>
+      <h2>Mi aplicación de Pokemones</h2>
       <ul>
         {pokemones.map(p => <Pokemon pokemon={p} key={p.name} />)}
       </ul>
