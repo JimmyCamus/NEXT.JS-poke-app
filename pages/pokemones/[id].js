@@ -1,17 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import Button from "../../components/Button.js";
+import Container from "../../components/Container.js";
+import Title from "../../components/Title.js";
 
 const Pokemon = ({ data }) => {
-  const router = useRouter();
-
   return (
     <div>
-      <h1>
-        {data.name} número #{data.id}{" "}
-      </h1>
-      <Image src={data.sprites.front_default} width={400} height={400} alt="" />
-      <Link href="/">Volver</Link>
+      <Container>
+        <Title>
+          {data.name} número #{data.id}{" "}
+        </Title>
+      </Container>
+      <Container>
+        <Image
+          src={data.sprites.front_default}
+          width={400}
+          height={400}
+          alt=""
+        />
+      </Container>
+      <Container>
+        <Link href="/">
+          <Button>Volver al inicio</Button>
+        </Link>
+      </Container>
     </div>
   );
 };
@@ -27,16 +40,11 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-
-  const paths = [
-    { params: { id: "1" } },
-    { params: { id: "2" } }
-  ]
-
+  const paths = [{ params: { id: "1" } }, { params: { id: "2" } }];
   return {
     paths,
     fallback: "blocking",
-  }
+  };
 };
 
 /*
